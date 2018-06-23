@@ -9,6 +9,8 @@ import { DrawService } from './services/draw.service';
 export class AppComponent {
   @ViewChild('risovalka') canvas: ElementRef;
 
+  private is_drawing = false;
+
   constructor(private drawService: DrawService) {
   }
 
@@ -19,18 +21,44 @@ export class AppComponent {
     );
   }
 
-  drawLine() {
-    this.drawService.drawLine(0, 100);
+  draw(event: MouseEvent) {
+    if (!this.is_drawing) {
+      return;
+    }
+
+    // get relative coordinates on mouse move
+    const {x, y} = this.getRelativeCoordinates(event);
+
+    // TODO change painting method based on drawing tool
+    this.drawService.drawLine(x, y);
+  }
+
+  omMouseUp(event: MouseEvent) {
+    this.moveTo(event);
+    this.is_drawing = false;
+  }
+
+  omMouseDown(event: MouseEvent) {
+    this.moveTo(event);
+    this.is_drawing = true;
   }
 
   startDraw(event: MouseEvent) {
+    this.moveTo(event);
+  }
+
+  /**
+   * Move canvas cursor
+   * 
+   * @param {MouseEvent} event
+   * @returns void 
+   */
+  moveTo(event: MouseEvent) {
     // get relative coordinates
     const {x, y} = this.getRelativeCoordinates(event);
 
     this.drawService.moveTo(x, y);
-    this.drawLine();
   }
-
 
   /**
    * Get coordinates from MouseEvent relative to element

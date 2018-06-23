@@ -1,8 +1,17 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="width: 1024px; margin: 0 auto;">
-  <canvas (click)="startDraw($event)" #risovalka style="background: #efefef" width="500px" height="500px"></canvas>
+  <canvas 
+        #risovalka      
+        (click)="startDraw($event)"
+        (mousemove)="draw($event)"
+        (mouseup)="omMouseUp($event)"
+        (mousedown)="omMouseDown($event)"
+        style="background: #efefef"
+        width="500px"
+        height="500px"
+    ></canvas>
 
-      <div style="cursor: pointer;" (click)="drawLine()">
+      <div style="cursor: pointer;">
           line
       </div>
 </div>
