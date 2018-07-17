@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { PaintComponent } from './paint/paint.component';
+import { HttpModule } from "@angular/http"
 
 const  appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -23,7 +24,7 @@ const  appRoutes: Routes = [
     PaintComponent
   ],
   imports: [
-    BrowserModule,  RouterModule.forRoot(appRoutes)
+    HttpModule, BrowserModule,  RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent, RegisterComponent]
