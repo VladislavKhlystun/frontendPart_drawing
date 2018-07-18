@@ -16,9 +16,13 @@ export class RegisterComponent implements OnInit {
   
   constructor(private apiService: ApiService) { }
 
-  sendData(user: User) {
-    this.apiService.postData(user).subscribe(
-      (data: User) => {this.receivedUser = data; this.done = true},
+  sendData(e) {
+    e.preventDefault();
+
+    this.apiService.register(this.user).subscribe(
+      (response: any) => {
+        console.warn('SAVE JWT TOKEN', response.data)
+      },
        error => console.log(error)
     );
   } 

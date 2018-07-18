@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
+import { FormsModule }   from '@angular/forms';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
@@ -25,7 +26,7 @@ const  appRoutes: Routes = [
     PaintComponent
   ],
   imports: [
-    HttpClientModule, BrowserModule,  RouterModule.forRoot(appRoutes)
+    HttpClientModule, FormsModule, BrowserModule,  RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,15 +4,22 @@ import { Observable } from 'rxjs/internal/Observable';
 import { User } from 'src/app/user';
 import { HttpHeaders } from '@angular/common/http';
 
+const API_ENDPOINT = 'http://localhost:8888/api';
+
 @Injectable() 
 export class ApiService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public postData (user : User) {
-    const myHeader = new HttpHeaders().set('Authorization', 'ура_мой_токен');
-    const body = {username: user.username, email: user.email, password: user.password};
-    return this.httpClient.post('http://localhost:8888/api/register', body, {headers:myHeader})
+  /**
+   * Send register request to API 
+   * 
+   * @param user 
+   * @returns {Observable}
+   */
+  public register (user : User) {
+    const { username, email, password } = user;
+    return this.httpClient.post( API_ENDPOINT + '/register', { username, email, password });
   }
 }
 
