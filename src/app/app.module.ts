@@ -6,7 +6,8 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { PaintComponent } from './paint/paint.component';
-import { HttpModule } from "@angular/http"
+import { HttpClientModule } from '@angular/common/http';
+
 
 const  appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -24,9 +25,9 @@ const  appRoutes: Routes = [
     PaintComponent
   ],
   imports: [
-    HttpModule, BrowserModule,  RouterModule.forRoot(appRoutes)
+    HttpClientModule, BrowserModule,  RouterModule.forRoot(appRoutes)
   ],
   providers: [],
-  bootstrap: [AppComponent, RegisterComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
