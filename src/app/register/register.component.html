@@ -4,18 +4,18 @@
             <h1>Register Form</h1>
         </div>
         <div class="col-md-6">
-  <form class="registerForm">
+  <form class="registerForm" (submit)="sendData($event)">
       <div class="form-group">
           <label for="name">Name</label>
-          <input type="text" class="form-control" id="name" placeholder="Enter name">
+          <input name="username" type="text" [(ngModel)]="user.username" class="form-control" id="name" placeholder="Enter name" >
         </div>
     <div class="form-group">
       <label for="email">Email address</label>
-      <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+      <input name="email" type="email" [(ngModel)]="user.email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" >
     </div>
     <div class="form-group">
       <label for="password">Password</label>
-      <input type="password" class="form-control" id="password" placeholder="Password">
+      <input name="password" [(ngModel)]="user.password" type="password" class="form-control" id="password" placeholder="Password" >
     </div>
     <div class="d-flex justify-content-center">
         <button type="submit" class="btn btn-success butt">Register</button>
